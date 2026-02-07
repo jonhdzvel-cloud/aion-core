@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 2, 6, 23; /* Slate 950 */
+  --foreground: 248, 250, 252; /* Slate 50 */
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  overflow: hidden; /* Prevent body scroll, handle in components */
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  
+  .glass-input {
+    @apply bg-slate-950/50 backdrop-blur-md border border-white/10 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all duration-300;
+  }
+}
