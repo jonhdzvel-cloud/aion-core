@@ -34,8 +34,9 @@ export default function ChatInterface() {
         setInput('');
         setIsLoading(true);
 
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
         try {
-            const response = await fetch('http://localhost:8000/api/v1/chat/message', {
+            const response = await fetch(`${apiUrl}/api/v1/chat/message`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +99,9 @@ export default function ChatInterface() {
                 <div className="flex items-center gap-3">
                     <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/50 border border-white/5 mx-2">
                         <Globe size={14} className="text-blue-400" />
-                        <span className="text-xs text-slate-400">Localhost:8000</span>
+                        <span className="text-xs text-slate-400">
+                            {process.env.NEXT_PUBLIC_API_URL ? 'Cloud:Active' : 'Localhost:8000'}
+                        </span>
                     </div>
 
                     <div className="relative group">
