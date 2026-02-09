@@ -14,7 +14,7 @@ export default function ChatInterface() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [provider, setProvider] = useState('ollama');
+    const [provider, setProvider] = useState(process.env.NEXT_PUBLIC_API_URL ? 'openai' : 'ollama');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
